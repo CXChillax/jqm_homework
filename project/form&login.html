@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>-->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
+		<!--<link rel="stylesheet" type="text/css" href="css/themes/MyTheme.css"/>-->
+		<!--<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<body>
+		
+		<!--header-->
+		<div data-role = "header" data-position="fixed" data-tap-toggle="false">
+			<h1>personal</h1>
+		</div>
+		
+		<!--content-->
+		<div data-role = "content">
+			<p> content something</p>
+			<form action="" method="post">
+				<label for="myuser">username</label>
+				<input type="text" name="myuser" id="myuser">
+				<label for="passwd">passwd</label>
+				<input type="password" name="passwd" id="passwd" >
+				<input type="checkbox" name="switch" id="switch" data-role = "flipswitch" value="" />
+				<a href="">forget your passwd?</a>
+
+				<label for="captcha">captcha</label>
+				<input type="text" name="captcha" id="captcha">
+					
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="" data-role = "button"> login</a>
+					</div>
+					<!--<p style="text-align: center;">or</p>-->
+					<div class="ui-block-b">						
+						<a href="" data-role = "button">sign up</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<!--footer-->
+		<div data-role = "footer">
+			<h1>footer something</h1>
+		</div>
+	</body>
+</html>

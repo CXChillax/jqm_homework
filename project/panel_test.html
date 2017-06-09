@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/49af.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	
+		<script type="text/javascript">
+			$(function(){
+				$("[data-role='header'],[data-role='footer']").toolbar();
+			});	
+		</script>
+	</head>
+	<body>
+		
+		<!--header-->
+		<div data-role = "header" data-position="fixed" data-tap-toggle="false" data-theme="a" >
+			<h1>header something</h1>
+			<a href="#panel1" data-icon = "bars" data-iconpos = "notext" data-position="right"></a>
+		</div>
+		
+		<!--footer-->
+		<div data-role = "footer" data-position="fixed" data-tap-toggle="false" data-theme="a">
+			<h1>footer something</h1>
+		</div>
+		
+		<!--content-->
+		<div id = "home" data-role = "page">
+			<div class="ui-content" role="main"> 
+				<h3>content something</h3>
+				<a data-role = "button" href="#page1">1</a>
+			</div>
+		</div>
+		
+		<div id = "page1" data-role = "page">
+			<div class="ui-content" role="main"> 
+				
+				<a href="#panel1" data-role = "button" >面板</a>
+				<a href="#home" data-role = "button">home</a>
+			</div>
+			
+				<div id="panel1" data-role="panel" data-position = "left">
+					<div>面板内容</div>
+
+					<form action="" method="post">
+						<label for="myuser">username</label>
+						<input type="text" name="myuser" id="myuser">
+						<label for="passwd">passwd</label>
+						<input type="password" name="passwd" id="passwd" >
+						<input type="checkbox" name="switch" id="switch" data-role = "flipswitch" value="" />
+						<a href="">forget your passwd?</a>
+		
+						<label for="captcha">captcha</label>
+						<input type="text" name="captcha" id="captcha">
+							
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<a href="" data-role = "button"> login</a>
+							</div>
+							
+							<div class="ui-block-b">						
+								<a href="" data-role = "button">sign up</a>
+							</div>
+						</div>
+					</form>
+
+					<!--<a href="#page1" data-rel="close" data-role="button" >关闭</a>-->
+				</div>
+			
+		</div>
+		
+		
+	</body>
+</html>

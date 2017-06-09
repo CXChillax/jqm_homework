@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="css/themes/49af.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	
+		<!--owl-->
+		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.carousel.css"/>
+		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.theme.css"/>
+		<script src="owl-carousel/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("[data-role='footer']").toolbar();
+				$("[data-role='panel']").panel();
+				$("[data-role='collapsible']").collapsibleset();
+				
+				$("#switch").change(function(){
+					if ($("#switch").is(":checked")) {
+						document.getElementById('passwd').type="text";
+					} else{
+						document.getElementById('passwd').type="password";
+					}
+				})
+			});
+			
+			$(document).on("pagecreate", function(){
+				$("[data-role='listview']").listview();
+				$("[data-role='panel']").panel();
+				$("[data-role='controlgroup']").controlgroup();
+			});
+			$(document).on("pagecreate", function(){
+				$(".owl-carousel").owlCarousel({
+					autoPlay: 3000,	//3s
+					items : 4,
+			        itemsDesktop : [1199,3],
+			        itemsDesktopSmall : [979,3],
+			        itensMobile: [479,1],
+			        pagination: false,
+				});
+//			$("#footer").toolbar();
+			});
+		</script>
+		<style type="text/css">
+			.owl-carousel .item img{
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+			.owl-carousel .item{
+				margin: 3px;
+			}
+			.ui-perImg{
+				
+			}
+			/*.ui-panel-inner {  
+				position: absolute;
+			    width: 240px;
+			    max-width: 240px;
+			    top: 0px;
+			    bottom: 0px;
+			    overflow: scroll;
+			    -webkit-overflow-scrolling: touch;  
+			}
+			.ui-panel .ui-panel-open {
+			    position:fixed;
+			} */
+		</style>
+	</head>
+	<body>
+		
+		<!--
+        	描述：RightPanel page
+        -->
+		<div id="RightPanel" data-role = "panel" data-position="right" data-display="overlay" data-theme = "a">
+			<div class="ui-panel-inner">
+			<ul data-role = "listview">
+				<li>
+					<a href="#popup" style="background: #49AFCD;"  data-position-to="window" >  
+						<img class="ui-btn-corner-all" src="img/little_sister.jpeg"/>
+						<div style="color: white;">
+							<p>新垣结衣</p>
+							<p>ID: 1646764</p>
+							<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			
+			<!--no login page -->
+			<!--<ul data-role = "listview">
+				<li>
+					<a href="#popup" style="background: #49AFCD;" class="ui-btn">
+						<img src="img/one_punch.png"/>
+						<p style="color: white;">尚未登录</p>
+						<button class="ui-btn ui-btn-inline">登录</button>
+					</a>
+				</li>
+			</ul>-->
+		
+			<ul data-role = "listview">
+				<!--<li data-role="list-divider"></li>-->
+				<br>
+				<br>
+				<li data-iconpos = "left" data-icon = "home"><a href="" >消息</a></li>
+				<li><a href="">好友</a></li>
+				<br>
+				<li><a href="">喜欢</a></li>
+				<li><a href="">收藏</a></li>
+				<!--<li data-role="list-divider"></li>-->
+				<br>
+				<li><a href="">钱包</a></li>
+				<li><a href="">订单</a></li>
+				<br>	
+			</ul>
+			
+			<div data-role="controlgroup"  data-type="horizontal" data-theme = "a">
+			  <a href="#" data-role="button">夜间模式</a>
+			  <a href="#" data-role="button">设置</a>
+			  <a href="#" data-role="button">关于</a>
+			</div>
+			
+			</div>
+		</div>
+		
+		
+		<!--footer-->
+		<div data-role = "footer" data-position="fixed" data-theme="a" >
+			<div id="footer" data-role = "navbar">
+				<ul>
+					<li><a href="index.html" data-icon = "home">首页</a></li>
+					<li><a href="#category" data-icon = "bars">分类</a></li>
+					<li><a href="#share" data-icon = "heart">分享</a></li>
+					<li><a href="#shop" data-icon = "shop">闲置</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!--index content-->
+		<div id="index" data-role = "page">
+			
+			<!--index header-->
+			<div id="" data-role = "header" data-position="fixed" data-theme="a">
+				<ul data-role = "listview" data-split-icon = "gear">
+					<li>
+						<a href="" style="background: #49AFCD;">
+							<label for="headsearch" class="ui-hidden-accessible">搜索...</label>
+							<input id="headsearch" type="search" name="headsearch" value="搜索...">
+						</a>
+						<!--<a href="#" data-icon = "arrow-r"></a>-->
+						<a href="#RightPanel" data-icon = "user" style="background: #49AFCD;"></a>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="" class="ui-content" role="main" >
+				<div class="owl-carousel">
+					<div class="item">
+						<a href="category.html"><img src="img/owl1.jpg"/></a>
+					</div>
+					<div class="item">
+						<a href=""><img src="img/owl2.jpg"/></a>
+					</div>
+					<div class="item">
+						<a href=""><img src="img/owl3.jpg"/></a>
+					</div>
+					<div class="item">
+						<a href=""><img src="img/owl4.jpg"/></a>
+					</div>
+				</div>
+				
+				<br>
+				<!--描述：节目 data-inset = "true" 添加圆角和外边距-->
+				<ul data-role = "listview" >
+					<li data-role = "list-divider">热门</li>
+					<li>
+						<a href="">
+							<img src="img/owl1.jpg"/>
+							<h1>一些标题</h1>
+							<p>预览内容</p>
+							<hr style="border: 1px solid darkgray;">
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl2.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl3.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl4.jpg"/>
+							<h2>一些标题</h2>
+							<p>预览内容</p>
+						</a>
+					</li>
+				</ul>
+				<ul data-role = "listview">
+					<li data-role = "list-divider">热门</li>
+					<li>
+						<a href="">
+							<img src="img/owl1.jpg"/>
+							<h1>一些标题</h1>
+							<p>预览内容</p>
+							<hr>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl2.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl3.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl4.jpg"/>
+							<h2>一些标题</h2>
+							<p>预览内容</p>
+						</a>
+					</li>
+				</ul>
+				<ul data-role = "listview">
+					<li data-role = "list-divider">热门</li>
+					<li>
+						<a href="">
+							<img src="img/owl1.jpg"/>
+							<h1>一些标题</h1>
+							<p>预览内容</p>
+							<hr>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl2.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl3.jpg"/>
+							<h6>一些标题</h6>
+							<p>预览内容</p>
+						</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+					</li>
+					<li>
+						<a href="">
+							<img src="img/owl4.jpg"/>
+							<h2>一些标题</h2>
+							<p>预览内容</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<!--login page-->
+		<div id="popup" data-role="popup" >
+			<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
+				<h2>登录</h2>
+			</div>
+			<div class = "ui-content" role="main">
+				<!--<button class="ui-btn-active"> 登录</button>-->
+				<form action="" method="post">
+				<label for="myuser">username</label>
+				<input type="text" name="myuser" id="myuser" data-clear-btn="true">
+				<label for="passwd">passwd</label>
+				<input type="password" name="passwd" id="passwd" >
+				
+				<label>
+					<input type="checkbox" name="switch" id="switch" data-mini = "true">显示密码
+				</label>
+				<a href="">forget your passwd?</a>
+
+				<label for="captcha">captcha</label>
+				<input type="text" name="captcha" id="captcha">
+					
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="" data-role = "button"> login</a>
+					</div>
+					
+					<div class="ui-block-b">						
+						<a href="" data-role = "button">sign up</a>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+		
+		<!--category page -->
+		<div id="category" data-role="page">
+			<div id="" data-role="header" data-position="fixed" data-add-back-btn = "true" data-back-btn-text="返回">
+				<h2>分类</h2>
+				<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+			</div>
+			
+			<div id="" class="ui-content" role="main">
+				<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<a href="" data-role = "button">小说</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">爱情</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">历史</a>
+					</div>
+					<div class="ui-block-a">
+						<a href="" data-role = "button">外国文学</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">青春</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">励志</a>
+					</div>
+					<div class="ui-block-a">
+						<a href="" data-role = "button">随笔</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">传记</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">推理</a>
+					</div>
+					<div class="ui-block-a">
+						<a href="" data-role = "button">旅行</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">奇幻</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">经营</a>
+					</div>
+					<div class="ui-block-a">
+						<a href="" data-role = "button">纪实</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">美食</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">哲学</a>
+					</div>
+					<div class="ui-block-a">
+						<a href="" data-role = "button">武侠</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="" data-role = "button">生活</a>
+					</div>
+					<div class="ui-block-c">
+						<a href="" data-role = "button">科技</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--
+        	share page	
+        -->
+        <div id="share" data-role = "page">
+        	<div id="" data-role = "header" data-position="fixed" data-add-back-btn = "true" data-back-btn-text="返回">
+        		<h2>分享</h2>
+        		<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+        	</div>
+        	
+        	<div class="ui-content" role="main">
+        		<br>
+    			<ul data-role = "listview">
+    				<li data-role = "list-divider" >
+    					<ul data-role = "listview" data-split-icon = "gear">
+    						<li class="ui-li-divider" >
+    							<a href="">精华书评</a>
+    							<a href="#index" data-icon = "bullets" style="background: #49AFCD;"> </a>
+    						</li>
+    					</ul>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl8.jpg"/>
+    						<h1>每个小孩都值得善良以待</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl7.jpg"/>
+    						<h1>战争是无能为力的心痛</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					</a>
+    				</li>
+    				<br>
+    				<li data-role = "list-divider">
+    					<ul data-role = "listview" data-split-icon = "gear">
+    						<li class="ui-li-divider">
+    							<a href="">为你推荐</a>
+    							<a href="" data-icon = "bullets" style="background: #49AFCD;"></a>
+    						</li>
+    					</ul>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    				<br>
+    				<li data-role = "list-divider">
+    					<ul data-role = "listview" data-split-icon = "gear">
+    						<li class="ui-li-divider">
+    							<!--<h1>发现好书</h1>-->
+    							<a href="">发现好书</a>
+    							<a href="" data-icon = "bullets" style="background: #49AFCD;"></a>
+    						</li>
+    					</ul>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    				<li>
+    					<a href="">
+    						<img src="img/owl6.jpg"/>
+    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
+    						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+    					
+    					</a>
+    				</li>
+    			</ul>
+        	</div>
+        </div>
+        
+        <!--
+        	share page
+        -->
+        <div id="shop" data-role = "page">
+        	<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
+        		<h2>闲置</h2>
+        		<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+        	</div>
+        	<div class="ui-content" role="main">
+        		<div id="" data-role="collapsible-set">
+					<div id="" data-role = "collapsible" data-iconpos = "right" data-collapsed-icon = "carat-d" data-expanded-icon = "carat-u">
+						<h3>交换</h3>
+						<table data-role="table" id="table-ex" data-mode="columntoggle" class="ui-body-a ui-shadow ui-responsive" data-column-btn-theme="a" data-column-btn-text="数据" data-column-popup-theme = "a">
+							<thead>
+								<tr class="ui-bar-a">
+									<th data-priority="critical">序号</th>
+									<th>帖子</th>
+									<th data-priority="4">作者</th>
+									<th data-priority="5">回复</th>
+									<th data-priority="2">最后查看</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>1</th>
+									<td><a href="">sdlfj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>2</th>
+									<td><a href="">s3fj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>3</th>
+									<td><a href="">sdrrffj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>4</th>
+									<td><a href="">sddghj</a></td>
+									<td>56</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="" data-role = "collapsible" data-iconpos = "right" data-collapsed-icon = "carat-d" data-expanded-icon = "carat-u">
+						<h3>出售</h3>
+						<table data-role="table" id="table-sl" data-mode="columntoggle" class="ui-body-a ui-shadow ui-responsive" data-column-btn-theme="a" data-column-btn-text="数据" data-column-popup-theme = "a">
+							<thead>
+								<tr class="ui-bar-a">
+									<th data-priority="critical">序号</th>
+									<th>帖子</th>
+									<th data-priority="4">作者</th>
+									<th data-priority="5">回复</th>
+									<th data-priority="2">最后查看</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>1</th>
+									<td><a href="">sdlfj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>2</th>
+									<td><a href="">s3fj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>3</th>
+									<td><a href="">sdrrffj</a></td>
+									<td>56</td>
+								</tr>
+								<tr>
+									<th>4</th>
+									<td><a href="">sddghj</a></td>
+									<td>56</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+        	</div>
+        </div>
+        
+	</body>
+</html>
