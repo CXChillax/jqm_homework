@@ -35,6 +35,19 @@
 				})
 			});
 			
+			$(document).bind('mobileinit', function(){  
+		    	$.event.special.swipe.horizontalDistanceThreshold = 100; // 修改触发 swipe 事件的最小水平拖曳距离为 100(px)  
+		   	 	$.event.special.swipe.verticalDistanceThreshold = 120; // 修改触发 swipe 事件的最大垂直拖曳距离为 120 (px)  
+			});  
+			$(function(){  
+		   		$("#home").on('swipeleft', function() {  
+		        	$('#category').click(); // 为首页绑定向左划动事件  
+		    	});  
+		    	$("#category").on('swiperight', function() {  
+		        	$('#home').click(); // 为另一页面绑定向右划动事件  
+		    	});  
+			});  
+			
 			$(document).on("pagecreate", function(){
 				$("[data-role='listview']").listview();
 				$("[data-role='panel']").panel();
@@ -80,57 +93,90 @@
 	</head>
 	<body>
 		
+		<!--login page-->
+			<div id="login" data-role="popup" >
+				<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
+					<h2>登录</h2>
+				</div>
+				<div class = "ui-content" role="main">
+					<!--<button class="ui-btn-active"> 登录</button>-->
+					<form action="" method="post">
+					<label for="myuser">username</label>
+					<input type="text" name="myuser" id="myuser" data-clear-btn="true">
+					<label for="passwd">passwd</label>
+					<input type="password" name="passwd" id="passwd" >
+					
+					<label>
+						<input type="checkbox" name="switch" id="switch" data-mini = "true">显示密码
+					</label>
+					<a href="">forget your passwd?</a>
+	
+					<label for="captcha">captcha</label>
+					<input type="text" name="captcha" id="captcha">
+						
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<a href="" data-role = "button"> login</a>
+						</div>
+						
+						<div class="ui-block-b">						
+							<a href="" data-role = "button">sign up</a>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		
 		<!--
         	描述：RightPanel page
         -->
 		<div id="RightPanel" data-role = "panel" data-position="right" data-display="overlay" data-theme = "a">
 			<div class="ui-panel-inner">
-			<ul data-role = "listview">
-				<li>
-					<a href="#popup" style="background: #49AFCD;"  data-position-to="window" >  
-						<img class="ui-btn-corner-all" src="img/little_sister.jpeg"/>
-						<div style="color: white;">
-							<p>新垣结衣</p>
-							<p>ID: 1646764</p>
-							<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
-						</div>
-					</a>
-				</li>
-			</ul>
+				<ul data-role = "listview">
+					<li>
+						<a href="#login" style="background: #49AFCD;"  data-position-to="window" >  
+							<img class="ui-btn-corner-all" src="img/little_sister.jpeg"/>
+							<div style="color: white;">
+								<p>新垣结衣</p>
+								<p>ID: 1646764</p>
+								<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+				
+				<!--no login page -->
+				<!--<ul data-role = "listview">
+					<li>
+						<a href="#popup" style="background: #49AFCD;" class="ui-btn">
+							<img src="img/one_punch.png"/>
+							<p style="color: white;">尚未登录</p>
+							<button class="ui-btn ui-btn-inline">登录</button>
+						</a>
+					</li>
+				</ul>-->
 			
-			<!--no login page -->
-			<!--<ul data-role = "listview">
-				<li>
-					<a href="#popup" style="background: #49AFCD;" class="ui-btn">
-						<img src="img/one_punch.png"/>
-						<p style="color: white;">尚未登录</p>
-						<button class="ui-btn ui-btn-inline">登录</button>
-					</a>
-				</li>
-			</ul>-->
-		
-			<ul data-role = "listview">
-				<!--<li data-role="list-divider"></li>-->
-				<br>
-				<br>
-				<li data-iconpos = "left" data-icon = "home"><a href="" >消息</a></li>
-				<li><a href="">好友</a></li>
-				<br>
-				<li><a href="">喜欢</a></li>
-				<li><a href="">收藏</a></li>
-				<!--<li data-role="list-divider"></li>-->
-				<br>
-				<li><a href="">钱包</a></li>
-				<li><a href="">订单</a></li>
-				<br>	
-			</ul>
-			
-			<div data-role="controlgroup"  data-type="horizontal" data-theme = "a">
-			  <a href="#" data-role="button">夜间模式</a>
-			  <a href="#" data-role="button">设置</a>
-			  <a href="#" data-role="button">关于</a>
-			</div>
-			
+				<ul data-role = "listview">
+					<!--<li data-role="list-divider"></li>-->
+					<br>
+					<br>
+					<li data-iconpos = "left" data-icon = "home"><a href="" >消息</a></li>
+					<li><a href="">好友</a></li>
+					<br>
+					<li><a href="">喜欢</a></li>
+					<li><a href="">收藏</a></li>
+					<!--<li data-role="list-divider"></li>-->
+					<br>
+					<li><a href="">钱包</a></li>
+					<li><a href="">订单</a></li>
+					<br>	
+				</ul>
+				
+				<div data-role="controlgroup"  data-type="horizontal" data-theme = "a">
+				  <a href="#" data-role="button">夜间模式</a>
+				  <a href="#" data-role="button">设置</a>
+				  <a href="#" data-role="button">关于</a>
+				</div>
 			</div>
 		</div>
 		
@@ -139,7 +185,7 @@
 		<div data-role = "footer" data-position="fixed" data-theme="a" >
 			<div id="footer" data-role = "navbar">
 				<ul>
-					<li><a href="index.html" data-icon = "home">首页</a></li>
+					<li><a href="#home" data-icon = "home">首页</a></li>
 					<li><a href="#category" data-icon = "bars">分类</a></li>
 					<li><a href="#share" data-icon = "heart">分享</a></li>
 					<li><a href="#shop" data-icon = "shop">闲置</a></li>
@@ -148,7 +194,7 @@
 		</div>
 		
 		<!--index content-->
-		<div id="index" data-role = "page">
+		<div id="home" data-role = "page">
 			
 			<!--index header-->
 			<div id="" data-role = "header" data-position="fixed" data-theme="a">
@@ -281,39 +327,7 @@
 			</div>
 		</div>
 		
-		<!--login page-->
-		<div id="popup" data-role="popup" >
-			<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
-				<h2>登录</h2>
-			</div>
-			<div class = "ui-content" role="main">
-				<!--<button class="ui-btn-active"> 登录</button>-->
-				<form action="" method="post">
-				<label for="myuser">username</label>
-				<input type="text" name="myuser" id="myuser" data-clear-btn="true">
-				<label for="passwd">passwd</label>
-				<input type="password" name="passwd" id="passwd" >
-				
-				<label>
-					<input type="checkbox" name="switch" id="switch" data-mini = "true">显示密码
-				</label>
-				<a href="">forget your passwd?</a>
-
-				<label for="captcha">captcha</label>
-				<input type="text" name="captcha" id="captcha">
-					
-				<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<a href="" data-role = "button"> login</a>
-					</div>
-					
-					<div class="ui-block-b">						
-						<a href="" data-role = "button">sign up</a>
-					</div>
-				</div>
-				</form>
-			</div>
-		</div>
+		
 		
 		<!--category page -->
 		<div id="category" data-role="page">
