@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/49af.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	
+		<script type="text/javascript">
+			$(function(){
+				$("[data-role='header'],[data-role='footer']").toolbar();
+			});	
+		</script>
+	</head>
+	<body>
+		
+		<!--header-->
+		<div data-role = "header" data-position="fixed" data-tap-toggle="false" data-theme="a">
+			<h1>something</h1>
+		</div>
+		
+		<!--footer-->
+		<div data-role = "footer" data-position="fixed" data-theme="a">
+			<div id="" data-role="navbar">
+				<ul>
+					<li><a href="">sdf</a></li>
+					<li><a href="">sw</a></li>
+					<li><a href="">wer</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<div data-role="page" id="page1" data-theme="e">
+		<div data-role="panel" id="page2">
+			
+			<form action="" method="post">
+						<label for="myuser">username</label>
+						<input type="text" name="myuser" id="myuser">
+						<label for="passwd">passwd</label>
+						<input type="password" name="passwd" id="passwd" >
+						<input type="checkbox" name="switch" id="switch" data-role = "flipswitch" value="" />
+						<a href="">forget your passwd?</a>
+		
+						<label for="captcha">captcha</label>
+						<input type="text" name="captcha" id="captcha">
+							
+						<div class="ui-grid-a">
+							<div class="ui-block-a">
+								<a href="" data-role = "button"> login</a>
+							</div>
+							
+							<div class="ui-block-b">						
+								<a href="" data-role = "button">sign up</a>
+							</div>
+						</div>
+					</form>
+
+			<a href="#page1" data-role="button" data-rel="close">关闭</a>
+		</div>
+				
+		
+
+		<div data-role="main" class="ui-content">
+			<a href="#page2" data-role="button" data-inline="true">打开面板</a>
+			<a href="#page3" data-role="button">第二张页面</a>
+		</div>
+
+		
+	</div>	
+
+	<div data-role="page" id="page3" data-theme="e">
+		<div data-role="panel" id="page4">
+			<a href="#page1" data-role="button" data-rel="close">关闭2</a>
+		</div>
+				
+		
+		<div data-role="main" class="ui-content">
+			<a href="#page4" data-role="button" data-inline="true">打开面板2</a>
+		</div>
+		
+	</div>
+		
+		
+	</body>
+</html>
