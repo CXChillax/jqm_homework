@@ -21,6 +21,17 @@
 		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.theme.css"/>
 		<script src="owl-carousel/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			
+			document.addEventListener('swipeleft', function(event) {
+			    // 判断默认行为是否可以被禁用
+			    if (event.cancelable) {
+			        // 判断默认行为是否已经被禁用
+			        if (!event.defaultPrevented) {
+			            event.preventDefault();
+			        }
+			    }
+			}, true);
+			
 			$(function(){
 				$("[data-role='footer']").toolbar();
 				$("[data-role='panel']").panel();
@@ -35,32 +46,60 @@
 				})
 			});
 			
-			$(document).bind('mobileinit', function(){  
-		    	$.event.special.swipe.horizontalDistanceThreshold = 100; // 修改触发 swipe 事件的最小水平拖曳距离为 100(px)  
-		   	 	$.event.special.swipe.verticalDistanceThreshold = 120; // 修改触发 swipe 事件的最大垂直拖曳距离为 120 (px)  
-			});  
-			$(function(){  
-		   		$("#home").on('swipeleft', function() {  
-		        	$('#category').click(); // 为首页绑定向左划动事件  
-		    	});  
-		    	$("#category").on('swiperight', function() {  
-		        	$('#home').click(); // 为另一页面绑定向右划动事件  
-		    	});  
-			});  
-			
+//			$(document).bind('mobileinit', function(){
+//				$.event.special.swipe.verticalDistanceThreshold = 120;
+//				$.event.special.swipe.horizontalDistanceThreshold = 100;
+//				$.mobile.activeBtnClass = "active-button"; 
+//				$.mobile.page.prototype.options.addBackBtn   = true;  
+//				$.mobile.page.prototype.options.backBtnText = "返回"; 
+//			});
+//			$(document).bind('mobileinit', function() {  
+//			  // Global strings  
+//			  $.mobile.loadingMessage = "正在加载";  
+//			  $.mobile.pageLoadErrorMessage = "加载页面出错";  
+//			  
+//			  // Widget strings  
+//			  $.mobile.page.prototype.options.backBtnText = "后退";  
+//			  $.mobile.dialog.prototype.options.closeBtnText = "关闭"  
+//			  $.mobile.collapsible.prototype.options.expandCueText = "点击展开";  
+//			  $.mobile.collapsible.prototype.options. collapseCueText = " 点击收起 ";  
+//			  $.mobile.listview.prototype.options.filterPlaceholder = " 过滤 ";  
+//			  $.mobile.selectmenu.prototype.options.closeText = " 关闭 ";  
+//			}); 
+			$(document).on("swipeleft", ".ui-page", function () {  
+		        var thePage = $(this),  
+		                next = thePage.jqmData("next");  
+		        if (next) {  
+		            $(":mobile-pagecontainer").pagecontainer("change", "#" + next, {transition: "slide"});  
+		        }  
+		    });  
+		    $(document).on("swiperight", ".ui-page", function () {  
+		        var thePage = $(this),  
+		                prev = thePage.jqmData("prev");  
+		        if (prev) {  
+		            $(":mobile-pagecontainer").pagecontainer("change", "#" + prev, {transition: "slide", reverse: true});  
+		        }  
+		    });
+		    
 			$(document).on("pagecreate", function(){
 				$("[data-role='listview']").listview();
 				$("[data-role='panel']").panel();
 				$("[data-role='controlgroup']").controlgroup();
+				$("[data-icon='user']").addClass("ui-btn ui-icon-user ui-btn-icon-notext ");
+				$("[data-icon='search']").addClass("ui-btn ui-icon-search ui-btn-icon-notext ");
+				$("[data-icon='search'],[data-icon='user']").css({
+					"background":"#49AFCD",
+					"border":"0px"
+				});
 			});
 			$(document).on("pagecreate", function(){
 				$(".owl-carousel").owlCarousel({
 					autoPlay: 3000,	//3s
-					items : 4,
+					items : 1,
 			        itemsDesktop : [1199,3],
 			        itemsDesktopSmall : [979,3],
 			        itensMobile: [479,1],
-			        pagination: false,
+			        pagination: true,
 				});
 //			$("#footer").toolbar();
 			});
@@ -148,7 +187,7 @@
 				<!--no login page -->
 				<!--<ul data-role = "listview">
 					<li>
-						<a href="#popup" style="background: #49AFCD;" class="ui-btn">
+						<a href="#login" style="background: #49AFCD;" class="ui-btn">
 							<img src="img/one_punch.png"/>
 							<p style="color: white;">尚未登录</p>
 							<button class="ui-btn ui-btn-inline">登录</button>
@@ -185,7 +224,7 @@
 		<div data-role = "footer" data-position="fixed" data-theme="a" >
 			<div id="footer" data-role = "navbar">
 				<ul>
-					<li><a href="#home" data-icon = "home">首页</a></li>
+					<li><a href="#home" data-icon = "home" >首页</a></li>
 					<li><a href="#category" data-icon = "bars">分类</a></li>
 					<li><a href="#share" data-icon = "heart">分享</a></li>
 					<li><a href="#shop" data-icon = "shop">闲置</a></li>
@@ -194,7 +233,7 @@
 		</div>
 		
 		<!--index content-->
-		<div id="home" data-role = "page">
+		<div id="home" data-role = "page" class="ui-page" data-next="category">
 			
 			<!--index header-->
 			<div id="" data-role = "header" data-position="fixed" data-theme="a">
@@ -330,10 +369,11 @@
 		
 		
 		<!--category page -->
-		<div id="category" data-role="page">
-			<div id="" data-role="header" data-position="fixed" data-add-back-btn = "true" data-back-btn-text="返回">
+		<div id="category" data-role="page" class="ui-page" data-next="share" data-prev="home">
+			<div id="" data-role="header" data-position="fixed">
 				<h2>分类</h2>
-				<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+				<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
+				<a href="#search"  data-icon="search" class="ui-btn-right" >搜索</a>
 			</div>
 			
 			<div id="" class="ui-content" role="main">
@@ -399,9 +439,10 @@
 		<!--
         	share page	
         -->
-        <div id="share" data-role = "page">
-        	<div id="" data-role = "header" data-position="fixed" data-add-back-btn = "true" data-back-btn-text="返回">
+        <div id="share" data-role = "page" class="ui-page" data-next="shop" data-prev="category">
+        	<div id="" data-role = "header" data-position="fixed">
         		<h2>分享</h2>
+        		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
         		<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
         	</div>
         	
@@ -452,7 +493,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>夺回开口的权力，夺回热爱的权利</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -461,7 +502,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>时代装聋作哑，荒原压抑少年</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -470,7 +511,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>杰克船长越来越丧，丧如德普自己</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -489,7 +530,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>被人书写的大师们</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -498,7 +539,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>人生识字始忧患</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -507,7 +548,7 @@
     				<li>
     					<a href="">
     						<img src="img/owl6.jpg"/>
-    						<h1>浅喜似苍狗 深爱如长风</h1>
+    						<h1>村上春树周边</h1>
     						<p>一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述一些描述</p>
     						<p style="border-top:1px solid gainsboro ; font: 10px; padding: 4px 0 0 0;">关注&nbsp0&nbsp&nbsp被关注&nbsp45567</p>
     					
@@ -520,10 +561,11 @@
         <!--
         	share page
         -->
-        <div id="shop" data-role = "page">
-        	<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
+        <div id="shop" data-role = "page" class="ui-page" data-prev="share">
+        	<div id="" data-role="header">
         		<h2>闲置</h2>
-        		<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+        		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
+        		<a href=""  data-icon="search" data-inline="true">搜索</a>
         	</div>
         	<div class="ui-content" role="main">
         		<div id="" data-role="collapsible-set">
@@ -603,5 +645,18 @@
         	</div>
         </div>
         
+        <!--
+        	描述：search page
+        -->
+        <div id="search" data-role="page">
+        	
+        	<div data-role = "header">
+        		<input type="search" autofocus="autofocus">
+        	</div>
+        	
+        	<div class="ui-content">
+        		
+        	</div>
+        </div>
 	</body>
 </html>

@@ -5,6 +5,23 @@
 		<title></title>
 		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).bind('mobileinit', function() {  
+			  // Global strings  
+			  $.mobile.loadingMessage = "正在加载";  
+			  $.mobile.pageLoadErrorMessage = "加载页面出错";  
+			  
+			  // Widget strings  
+			  $.mobile.page.prototype.options.addBackBtn   = true;  
+			  $.mobile.page.prototype.options.backBtnText = "后退";  
+			  $.mobile.dialog.prototype.options.closeBtnText = "关闭"  
+			  $.mobile.collapsible.prototype.options.expandCueText = "点击展开";  
+			  $.mobile.collapsible.prototype.options. collapseCueText = " 点击收起 ";  
+			  $.mobile.listview.prototype.options.filterPlaceholder = " 过滤 ";  
+			  $.mobile.selectmenu.prototype.options.closeText = " 关闭 ";  
+			}); 
+		</script>
+		
 		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/themes/49af.css"/>
