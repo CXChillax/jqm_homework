@@ -21,17 +21,6 @@
 		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.theme.css"/>
 		<script src="owl-carousel/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
-			document.addEventListener('swipeleft', function(event) {
-			    // 判断默认行为是否可以被禁用
-			    if (event.cancelable) {
-			        // 判断默认行为是否已经被禁用
-			        if (!event.defaultPrevented) {
-			            event.preventDefault();
-			        }
-			    }
-			}, true);
-			
 			$(function(){
 				$("[data-role='footer']").toolbar();
 				$("[data-role='panel']").panel();
@@ -46,26 +35,7 @@
 				})
 			});
 			
-//			$(document).bind('mobileinit', function(){
-//				$.event.special.swipe.verticalDistanceThreshold = 120;
-//				$.event.special.swipe.horizontalDistanceThreshold = 100;
-//				$.mobile.activeBtnClass = "active-button"; 
-//				$.mobile.page.prototype.options.addBackBtn   = true;  
-//				$.mobile.page.prototype.options.backBtnText = "返回"; 
-//			});
-//			$(document).bind('mobileinit', function() {  
-//			  // Global strings  
-//			  $.mobile.loadingMessage = "正在加载";  
-//			  $.mobile.pageLoadErrorMessage = "加载页面出错";  
-//			  
-//			  // Widget strings  
-//			  $.mobile.page.prototype.options.backBtnText = "后退";  
-//			  $.mobile.dialog.prototype.options.closeBtnText = "关闭"  
-//			  $.mobile.collapsible.prototype.options.expandCueText = "点击展开";  
-//			  $.mobile.collapsible.prototype.options. collapseCueText = " 点击收起 ";  
-//			  $.mobile.listview.prototype.options.filterPlaceholder = " 过滤 ";  
-//			  $.mobile.selectmenu.prototype.options.closeText = " 关闭 ";  
-//			}); 
+
 			$(document).on("swipeleft", ".ui-page", function () {  
 		        var thePage = $(this),  
 		                next = thePage.jqmData("next");  
@@ -91,7 +61,8 @@
 					"background":"#49AFCD",
 					"border":"0px"
 				});
-				
+				$("dt").addClass("ui-btn ui-shadow");
+				$("dd").addClass("ui-content ui-input-text ui-page-theme-a ui-corner-all");
 				$("hr").css("border","1px solid darkgray");
 			});
 			$(document).on("pagecreate", function(){
@@ -243,11 +214,7 @@
 					<li>
 						<a href="" style="background: #49AFCD;">
 							<label for="headsearch" class="ui-hidden-accessible">搜索...</label>
-<<<<<<< HEAD
-							<input id="headsearch" type="search" name="headsearch" placeholder="搜索...">
-=======
 							<input id="headsearch" type="search" name="headsearch"  placeholder="搜索...">
->>>>>>> origin/master
 						</a>
 						<!--<a href="#" data-icon = "arrow-r"></a>-->
 						<a href="#RightPanel" data-icon = "user" style="background: #49AFCD;"></a>
@@ -276,9 +243,9 @@
 				<ul data-role = "listview" >
 					<li data-role = "list-divider">热门</li>
 					<li>
-						<a href="">
-							<img src="img/book/s29405015.jpg"/>
-							<h1>海洋与文明</h1>
+						<a href="#book">
+							<img src="img/book/s29418847.jpg"/>
+							<h1>深夜小狗神秘事件</h1>
 							<p>预览内容</p>
 							<hr style="border: 1px solid darkgray;">
 						</a>
@@ -449,7 +416,7 @@
         	<div id="" data-role = "header" data-position="fixed">
         		<h2>分享</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
-        		<a href=""  data-icon="search" class="ui-btn-right" >搜索</a>
+        		<a href="#search"  data-icon="search" class="ui-btn-right" >搜索</a>
         	</div>
         	
         	<div class="ui-content" role="main">
@@ -464,7 +431,7 @@
     					</ul>
     				</li>
     				<li>
-    					<a href="">
+    					<a href="#review">
     						<img src="img/book/s29418847.jpg"/>
     						<h1>每个小孩都值得善良以待</h1>
     						<p>许多事情是我们无法阻止的，比如与生俱来的疾病；许多事情是我们无法预料的，比如生存和死亡</p>
@@ -570,7 +537,7 @@
         	<div id="" data-role="header">
         		<h2>闲置</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
-        		<a href=""  data-icon="search" data-inline="true">搜索</a>
+        		<a href="#search"  data-icon="search" data-inline="true">搜索</a>
         	</div>
         	<div class="ui-content" role="main">
         		<div id="" data-role="collapsible-set">
@@ -680,16 +647,100 @@
         <div id="search" data-role="page">
         	
         	<div data-role = "header">
-<<<<<<< HEAD
-        		<input type="search" autofocus="autofocus" placeholder="搜索...">
-=======
-        		<input type="search" autofocus="autofocus"  placeholder="搜索...">
->>>>>>> origin/master
+        		<form>
+        			<div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+        				<input id="search-input"  data-type="search" data-enhanced="true" data-inset="false" autofocus="autofocus" placeholder="搜索...">
+        			</div>
+        			<div data-role = "controlgroup" data-enhanced = "true" data-filter = "true" data-filter-reveal="true" data-input = "#search-input" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+        				<div class="ui-controlgroup-controls">
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">百年孤独</a>
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">老人与海</a>
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">安妮的日记</a>
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">来自风平浪静的明天</a>
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">暴风雨中的蝴蝶</a>
+        					<a href="" class="ui-btn ui-corner-all ui-shadow ui-screen-hidden">贫民窟的百万富翁</a>
+        				</div>
+        			</div>
+        		</form>
         	</div>
         	
         	<div class="ui-content">
-        		
+        		<ol data-role="listview">
+        			<li data-role = "list-divider">热门</li>
+        			<li><a href="">新名字的故事</a></li>
+        			<li><a href="">时间的果</a></li>
+        			<li><a href="">每天早上和你一起醒来</a></li>
+        			<li><a href="">如花在野 </a></li>
+        			<li><a href="">被仰望与被遗忘</a></li>
+        			
+        		</ol>
         	</div>
         </div>
+        
+        <!--描述：book review-->
+        <div id="review" data-role = "page">
+        	<div id="" data-role = "header" >
+        		<h2>每个小孩都值得善良以待</h2>
+        		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
+        		<a href="#search"  data-icon="search" data-inline="true">搜索</a>
+        	</div>
+        	<div class="ui-content" role="main">
+        		<img src="img/book/s29418847.jpg"/>
+        		
+        		<p>&nbsp&nbsp&nbsp&nbsp许多事情是我们无法阻止的，比如与生俱来的疾病；许多事情是我们无法预料的，比如生存和死亡；许多事情是我们无能为力的，比如亲情的隔膜。这个世界上我们能够独立控制的事情太少，只有选择如何生活这一样，那么，一个自闭症儿童如何判断自己的人生以及如何面对生活的考验呢，马克哈登为我们讲述了一件奇妙的故事。</p>
+        		<p>&nbsp&nbsp&nbsp&nbsp2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97...当你看见这些数字的时候会想到什么，如果我告诉你说这些就是书上的章节名，你一定会和我一样在第一眼时觉得诧异，再回想一下，这些数字似乎和我们曾经接触过名为质数的排列很相似。而我们今天的主人公阿弗就是这样一个在数学方面极有天赋的小孩，他不仅背下了大量的质数，还知道全世界国家和首都的名字，对数字的天赋会进化为图像上的敏感，他会在书上用不同的表情记录下自己的情绪，钟爱数学的另一面就是他好像在语言方面缺失了一些基本的东西。</p>
+        		<p>&nbsp&nbsp&nbsp&nbsp他不太会表达自己，遇到危险、紧张、发怒、不可控制的时候，就只会尖叫，他不会与人交流情感，并不只是词不达意那么简单，他的大脑里好像没有迁就、理解、关怀、亲情这些东西，父亲和母亲都只是一个名词，远没有那条死去的小狗记忆深刻。他对自己的朋友说，未来将要去宇宙之中，然而如今却连离开家门的能力都没有。</p>
+				<p>&nbsp&nbsp&nbsp&nbsp奇怪的阿弗身上带着许多天才的模板和怪癖，钟爱自己喜欢的，而对旁外的不管不顾，可他也并不难缠，他会为了小狗的死感到难过，他会因为查出父亲的秘密而无法释怀，他会为自己母亲阻止他的考试感到不满和疑惑，他不知道该如何释放这些情绪，或者说他对自己这些陌生情绪的产生觉得分外生涩。</p>
+				<p>&nbsp&nbsp&nbsp&nbsp说一说他的梦想吧，他一直想要通过高级证书数学考试，那是他成为宇航员的第一步，然而小狗的神秘死亡，“死去”多年的母亲突然复活，扰乱了他人生第一步的规划。对于自闭症儿童来说，规划的混乱简直就是灭顶之灾，在他对生活有限的预期里，没有达成的愿望、如鲠在喉的秘密都很容易撕碎这个人，因为他对人生意义的理解太过缺失，换句话说，他的安全感远远不足。</p>
+				<p>&nbsp&nbsp&nbsp&nbsp什么是安全感呢，这是个笼统又抽象的概念，我们每个人在生活中的不断努力所做的任何一件事，其目的都不过是让自己开心或者让自己身边的人顺意，当我们把自己这个感觉缩小，会发现我们追求的不过是：满足感、认同感、以及被支持感，这些都是安全感的一种表达，我们需要有个人在路上指引我们该做什么，为什么要去做；我们需要在努力之后被夸赞或者获得某些成功；我们需要别人照顾我们的情绪，并想到方法去拯救我们。你看我们需要这么多东西来维持自己生活的意义，我们会交流、会沟通、会哭、会闹、会不开心、会有所回报，但阿弗不知道这些，他所能做的只有执拗地参加一门考试以及放声尖叫。</p>
+				<p>&nbsp&nbsp&nbsp&nbsp在阿弗的心里只有好的，比如可爱的小狗和那片天空，只有不好的，比如杀死小狗的父亲，在书里所表达的亲情的失落以及之后的寻找都是为了丰富阿弗贫乏的内心，包括那么多非语言性的符号，这些圆满一个孩子完整人格的必经之路，也是自闭症父母甚至于所有父母努力的目标，丰富一个孩子并塑造他完整的人生，无病痛之困、无灾祸之乱、无不安事之扰，每个生命都自有逻辑，每个生命都值得善良以待。</p>
+				<p>&nbsp&nbsp&nbsp&nbsp其实我更喜欢作者写作时的幽默了，没有什么比当你为这段纷乱的家庭关系苦恼，为这个孩子的情绪担忧的时候，阿弗突然画出的一个表达情绪的表情更觉得可爱的事了。</p>
+        	</div>
+        </div>
+        
+        <!--描述：book-->
+        <div id="book" data-role = "page" data-theme = "a">
+        	<div id="" data-role="header" >
+        		<h2>深夜小狗神秘事件</h2>
+        		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
+        		<a href=""  data-icon="search" data-inline="true">搜索</a>
+        	</div>
+        	
+        	<div class="ui-content" role="main">
+        		<img src="img/book/s29418847.jpg"/>
+        		<div id="">
+        			<h2>深夜小狗神秘事件</h4>
+        			<p>作者： 马克•哈登</p>
+        			<p>出版社 ： 百花文艺出版社</p>
+        			<p>出版时间：2017-3</p>
+        		</div>
+        		
+        		<dl>
+        			<dt class=" ui-btn ui-shadow">简介</dt>
+        			<dd class="ui-content ui-input-text ui-shadow-inset ui-page-theme-a ui-corner-all">阿弗，有着惊人的记忆力和超群的数学天赋。他知道世界上所有国家及其首都的名称，知道7507以内的所有质数，梦想是成为宇航员。他习惯生活在自己的小小世界，不爱跟人说话，对他来说，解决复杂的数学题很容易，理解他人的想法却很难。</dd>
+        			<dt class="ui-btn ui-shadow">作者</dt>
+        			<dd class="ui-content ui-input-text ui-shadow-inset ui-page-theme-a ui-corner-all">马克•哈登（Mark Haddon）<br>
+						英国作家、插画家、漫画家及剧作家。<br>
+						1962年生于英国中部名城北安普顿，1981年毕业于牛津大学，之后在爱丁堡大学获得英语文学硕士学位。<br>
+						2003年，长篇小说处女作《深夜小狗神秘事件》出版，凭借作品本身的魅力，于2004年圣诞前夜，超越《哈利•波特》，登上英国畅销书排行榜第1名，并荣获英国“惠特布莱德年度图书”“、“大英图书奖年度童书”“、《卫报》“最佳儿童小说奖”等三十多项文学大奖。<br>
+						迄今，马克•哈登已著有二十多部作品，囊括了英联邦诸多重要文学大奖，加上在编剧与美术方面的深厚造诣，被众多读者和媒体称为“罕见的全能鬼才”。</dd>
+        			<dt>详细</dt>
+        			<dd>作者:  [英] 马克·哈登 <br>
+						出版社: 百花文艺出版社<br>
+						原作名: The Curious Incident of the Dog in the Night-Time<br>
+						译者:  李尧 <br>
+						出版年: 2017-3<br>
+						页数: 256<br>
+						定价: 39.5元<br>
+						装帧: 平装<br>
+						ISBN: 9787530671580<br>
+        			</dd>
+        			
+        		</dl>
+        	</div>
+        	
+        </div>
+        
+        
 	</body>
 </html>
