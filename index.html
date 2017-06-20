@@ -9,7 +9,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css"/>
 		
-		<link rel="stylesheet" type="text/css" href="css/themes/49af.css"/>
+		<link rel="stylesheet" type="text/css" href="css/themes/20.css"/>
 		<link rel="stylesheet" type="text/css" href="css/themes/jquery.mobile.icons.min.css"/>
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
@@ -20,6 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.carousel.css"/>
 		<link rel="stylesheet" type="text/css" href="owl-carousel/owl.theme.css"/>
 		<script src="owl-carousel/owl.carousel.min.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
 			$(function(){
 				$("[data-role='footer']").toolbar();
@@ -32,18 +33,52 @@
 					} else{
 						document.getElementById('passwd').type="password";
 					}
-				})
+				});
+				
+				
+				$(document).ready(function(){
+					
+					$("[data-icon='user']").addClass("ui-btn ui-icon-user ui-btn-icon-notext ui-white-background");
+					$("[data-icon='search']").addClass("ui-btn ui-icon-search ui-btn-icon-notext ui-white-background");
+					
+					$("[data-icon='search'],[data-icon='user']").css({
+						"background":"#49AFCD",
+						"border":"0px",
+					});
+					
+					$("#night").click(function(){
+						$("[data-theme='a']").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
+//						$(".ui-content").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
+						$("[data-role='page']").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
+//						$("[data-role='panel']").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b ui-background");
+//
+//						$("#body").toggleClass("ui-background ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
+						$("#body").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
+
+
+						var BackGround = $("[data-icon='search'],[data-icon='user']").css("background-color");
+						if (BackGround == "#49AFCD") {
+								$("[data-icon='search'],[data-icon='user']").css("background-color", "#000000");
+						} else{
+							$("[data-icon='search'],[data-icon='user']").css("background-color", "#49AFCD");
+						}
+					});
+					
+					$("dt").addClass("ui-btn ui-shadow");
+					$("dd").addClass("ui-content ui-input-text ui-page-theme-a ui-corner-all");
+					$("hr").css("border","1px solid darkgray");
+				});
 			});
 			
 
-			$(document).on("swipeleft", ".ui-page", function () {  
+			$(document).on("swipeleft", ".ui-listview", function () {  
 		        var thePage = $(this),  
 		                next = thePage.jqmData("next");  
 		        if (next) {  
 		            $(":mobile-pagecontainer").pagecontainer("change", "#" + next, {transition: "slide"});  
 		        }  
 		    });  
-		    $(document).on("swiperight", ".ui-page", function () {  
+		    $(document).on("swiperight", ".ui-listview", function () {  
 		        var thePage = $(this),  
 		                prev = thePage.jqmData("prev");  
 		        if (prev) {  
@@ -55,16 +90,9 @@
 				$("[data-role='listview']").listview();
 				$("[data-role='panel']").panel();
 				$("[data-role='controlgroup']").controlgroup();
-				$("[data-icon='user']").addClass("ui-btn ui-icon-user ui-btn-icon-notext ");
-				$("[data-icon='search']").addClass("ui-btn ui-icon-search ui-btn-icon-notext ");
-				$("[data-icon='search'],[data-icon='user']").css({
-					"background":"#49AFCD",
-					"border":"0px"
-				});
-				$("dt").addClass("ui-btn ui-shadow");
-				$("dd").addClass("ui-content ui-input-text ui-page-theme-a ui-corner-all");
-				$("hr").css("border","1px solid darkgray");
+			
 			});
+			
 			$(document).on("pagecreate", function(){
 				$(".owl-carousel").owlCarousel({
 					autoPlay: 3000,	//3s
@@ -86,8 +114,12 @@
 			.owl-carousel .item{
 				margin: 3px;
 			}
-			.ui-perImg{
-				
+			.ui-background{
+				background-color: #000000;
+			}
+			.ui-white-background{
+				background-color: #49AFCD;
+				border: 0px;
 			}
 			/*.ui-panel-inner {  
 				position: absolute;
@@ -103,41 +135,9 @@
 			} */
 		</style>
 	</head>
-	<body>
+	<body id="body">
 		
-		<!--login page-->
-			<div id="login" data-role="popup" >
-				<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
-					<h2>登录</h2>
-				</div>
-				<div class = "ui-content" role="main">
-					<!--<button class="ui-btn-active"> 登录</button>-->
-					<form action="" method="post">
-					<label for="myuser">username:</label>
-					<input type="text" name="myuser" id="myuser" data-clear-btn="true">
-					<label for="passwd">passwd:</label>
-					<input type="password" name="passwd" id="passwd" >
-					
-					<label>
-						<input type="checkbox" name="switch" id="switch" data-mini = "true">显示密码
-					</label>
-					<a href="">forget your passwd?</a>
-	
-					<label for="captcha">captcha:</label>
-					<input type="text" name="captcha" id="captcha">
-						
-					<div class="ui-grid-a">
-						<div class="ui-block-a">
-							<a href="" data-role = "button"> login</a>
-						</div>
-						
-						<div class="ui-block-b">						
-							<a href="" data-role = "button">sign up</a>
-						</div>
-					</div>
-					</form>
-				</div>
-			</div>
+		
 		
 		<!--
         	描述：RightPanel page
@@ -168,24 +168,24 @@
 					</li>
 				</ul>-->
 			
-				<ul data-role = "listview">
+				<ul data-role = "listview" data-theme = "a" id="panelset">
 					<!--<li data-role="list-divider"></li>-->
 					<br>
 					<br>
 					<li data-iconpos = "left" data-icon = "home"><a href="" >消息</a></li>
-					<li><a href="">好友</a></li>
+					<li data-icon = "navigation"><a href="">好友</a></li>
 					<br>
-					<li><a href="">喜欢</a></li>
-					<li><a href="">收藏</a></li>
+					<li data-icon = "heart"><a href="">喜欢</a></li>
+					<li data-icon = "star"><a href="">收藏</a></li>
 					<!--<li data-role="list-divider"></li>-->
 					<br>
-					<li><a href="">钱包</a></li>
-					<li><a href="">订单</a></li>
+					<li data-icon = "shop"><a href="">钱包</a></li>
+					<li data-icon = "bars"><a href="">订单</a></li>
 					<br>	
 				</ul>
 				
 				<div data-role="controlgroup"  data-type="horizontal" data-theme = "a">
-				  <a href="#" data-role="button">夜间模式</a>
+				  <a id="night" href="#" data-role="button">夜间模式</a>
 				  <a href="#" data-role="button">设置</a>
 				  <a href="#" data-role="button">关于</a>
 				</div>
@@ -206,7 +206,7 @@
 		</div>
 		
 		<!--index content-->
-		<div id="home" data-role = "page" class="ui-page" data-next="category">
+		<div id="home" data-role = "page" class="ui-page">
 			
 			<!--index header-->
 			<div id="" data-role = "header" data-position="fixed" data-theme="a">
@@ -228,19 +228,22 @@
 						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
 					</div>
 					<div class="item">
-						<a href=""><img src="img/book/s28831044.jpg"/></a>
+						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
+						<!--<a href=""><img src="img/book/s28831044.jpg"/></a>-->
 					</div>
 					<div class="item">
-						<a href=""><img src="img/book/s29418847.jpg"/></a>
+						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
+						<!--<a href=""><img src="img/book/s29418847.jpg"/></a>-->
 					</div>
 					<div class="item">
-						<a href=""><img src="img/book/s29450536.jpg"/></a>
+						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
+						<!--<a href=""><img src="img/book/s29450536.jpg"/></a>-->
 					</div>
 				</div>
 				
 				<br>
 				<!--描述：节目 data-inset = "true" 添加圆角和外边距-->
-				<ul data-role = "listview" >
+				<ul data-role = "listview" class="ui-listview" data-next="category">
 					<li data-role = "list-divider">热门</li>
 					<li>
 						<a href="#book">
@@ -254,21 +257,24 @@
 						<a href="">
 							<img src="img/book/s29436963.jpg"/>
 							<h6>杂草记</h6>
-							<p>预览内容</p>
+							<p>“只要认真观察，再不起眼、再无趣的植物都蕴蓄着生命的坚韧与美好。”</p>
+							<hr>
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/s29376146.jpg"/>
 							<h6>新名字的故事</h6>
-							<p>预览内容</p>
+							<p>只有你身为女人 才会知道这些丑陋的秘密</p>
+							<hr>
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/s29465794.jpg"/>
 							<h2>一座城，影响一代人</h2>
-							<p>预览内容</p>
+							<p>自1980年被批准设立经济特区，成为中国改革开放的“试验田”和“窗口”后，改革创新已成为她的灵魂。</p>
+							<hr>
 						</a>
 					</li>
 				</ul>
@@ -278,7 +284,7 @@
 						<a href="">
 							<img src="img/book/s29444913.jpg"/>
 							<h1>罗浮宫的守护者</h1>
-							<p>预览内容</p>
+							<p>当卢浮宫遇见漫画</p>
 							<hr>
 						</a>
 					</li>
@@ -286,21 +292,24 @@
 						<a href="">
 							<img src="img/book/s29431112.jpg"/>
 							<h6>上帝的手术刀</h6>
-							<p>预览内容</p>
+							<p>·这本书从孟德尔神父的“豌豆试验”入手，用跌宕起伏、起承转合的文学讲述手法，在全书中埋下层层伏笔，抖出了一个又一个的重磅包袱，宛如一位智者在科学之树下摇着扇子对基因编辑的历史脉络娓娓道来。</p>
+							<hr>
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/s29464924.jpg"/>
 							<h6>流浪者之歌</h6>
-							<p>预览内容</p>
+							<p>本书讲述了古印度贵族青年悉达多为了追求心灵的安宁，孤身一人展开求道之旅的故事。他聆听教义、结识名妓，还成为富商。</p>
+							<hr>
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/s29466436.jpg"/>
 							<h2>沉睡的人鱼之家</h2>
-							<p>预览内容</p>
+							<p>如果推理小说一定要有死亡，这本书所触及的或许就是最残忍最令人绝望的一种情境</p>
+							<hr>
 						</a>
 					</li>
 				</ul>
@@ -310,22 +319,22 @@
 						<a href="">
 							<img src="img/book/42ac480c6a844ed6bd118a26a3a95ea4_th.jpg"/>
 							<h1>邻居家的阳台闪着星星雨一样的灯</h1>
-							<p>预览内容</p>
-							<hr>
+							<!--<p>预览内容</p>-->
+							<!--<hr>-->
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/image.jpg"/>
 							<h6>泄露出了一堆星球</h6>
-							<p>预览内容</p>
+							<!--<p>预览内容</p>-->
 						</a>
 					</li>
 					<li>
 						<a href="">
 							<img src="img/book/8251959b525e4370b69b8cd536039f94.jpg"/>
 							<h6>心情沮丧的时候，要多逛逛菜市场，这里有一切生活的源头</h6>
-							<p>预览内容</p>
+							<!--<p>预览内容</p>-->
 						</a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 					</li>
 					<li>
@@ -342,14 +351,14 @@
 		
 		
 		<!--category page -->
-		<div id="category" data-role="page" class="ui-page" data-next="share" data-prev="home">
+		<div id="category" data-role="page" class="ui-page ui-listview" data-next="share" data-prev="home">
 			<div id="" data-role="header" data-position="fixed">
 				<h2>分类</h2>
 				<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
 				<a href="#search"  data-icon="search" class="ui-btn-right" >搜索</a>
 			</div>
 			
-			<div id="" class="ui-content" role="main">
+			<div id="" class="ui-content" role="main" >
 				<div class="ui-grid-b">
 					<div class="ui-block-a">
 						<a href="" data-role = "button">小说</a>
@@ -412,7 +421,7 @@
 		<!--
         	share page	
         -->
-        <div id="share" data-role = "page" class="ui-page" data-next="shop" data-prev="category">
+        <div id="share" data-role = "page" class="ui-page ui-listview" data-next="shop" data-prev="category">
         	<div id="" data-role = "header" data-position="fixed">
         		<h2>分享</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
@@ -533,7 +542,7 @@
         <!--
         	share page
         -->
-        <div id="shop" data-role = "page" class="ui-page" data-prev="share">
+        <div id="shop" data-role = "page" class="ui-page ui-listview" data-prev="share">
         	<div id="" data-role="header">
         		<h2>闲置</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
@@ -677,16 +686,54 @@
         	</div>
         </div>
         
+        <!--login page-->
+			<div id="login" data-role="page" data-theme = "a">
+				<div id="" data-role="header" data-add-back-btn = "true" data-back-btn-text="返回">
+					<h2>登录</h2>
+				</div>
+				<div class = "ui-content" role="main">
+					<!--<button class="ui-btn-active"> 登录</button>-->
+					<form action="" method="post">
+					<label for="myuser">username:</label>
+					<input type="text" name="myuser" id="myuser" data-clear-btn="true">
+					<label for="passwd">passwd:</label>
+					<input type="password" name="passwd" id="passwd" >
+					
+					<label>
+						<input type="checkbox" name="switch" id="switch" data-mini = "true">显示密码
+					</label>
+					<a href="">forget your passwd?</a>
+	
+					<label for="captcha">captcha:</label>
+					<input type="text" name="captcha" id="captcha">
+						
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<a href="" data-role = "button"> login</a>
+						</div>
+						
+						<div class="ui-block-b">						
+							<a href="" data-role = "button">sign up</a>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+        
         <!--描述：book review-->
-        <div id="review" data-role = "page">
+        <div id="review" data-role = "page" data-theme = "a">
         	<div id="" data-role = "header" >
         		<h2>每个小孩都值得善良以待</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
         		<a href="#search"  data-icon="search" data-inline="true">搜索</a>
         	</div>
         	<div class="ui-content" role="main">
-        		<img src="img/book/s29418847.jpg"/>
-        		
+        		<div class="owl-carousel">
+        			<div class="item">
+        				<img src="img/book/s29418847.jpg"/>
+        			</div>
+        		</div>
+        		<br>
         		<p>&nbsp&nbsp&nbsp&nbsp许多事情是我们无法阻止的，比如与生俱来的疾病；许多事情是我们无法预料的，比如生存和死亡；许多事情是我们无能为力的，比如亲情的隔膜。这个世界上我们能够独立控制的事情太少，只有选择如何生活这一样，那么，一个自闭症儿童如何判断自己的人生以及如何面对生活的考验呢，马克哈登为我们讲述了一件奇妙的故事。</p>
         		<p>&nbsp&nbsp&nbsp&nbsp2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97...当你看见这些数字的时候会想到什么，如果我告诉你说这些就是书上的章节名，你一定会和我一样在第一眼时觉得诧异，再回想一下，这些数字似乎和我们曾经接触过名为质数的排列很相似。而我们今天的主人公阿弗就是这样一个在数学方面极有天赋的小孩，他不仅背下了大量的质数，还知道全世界国家和首都的名字，对数字的天赋会进化为图像上的敏感，他会在书上用不同的表情记录下自己的情绪，钟爱数学的另一面就是他好像在语言方面缺失了一些基本的东西。</p>
         		<p>&nbsp&nbsp&nbsp&nbsp他不太会表达自己，遇到危险、紧张、发怒、不可控制的时候，就只会尖叫，他不会与人交流情感，并不只是词不达意那么简单，他的大脑里好像没有迁就、理解、关怀、亲情这些东西，父亲和母亲都只是一个名词，远没有那条死去的小狗记忆深刻。他对自己的朋友说，未来将要去宇宙之中，然而如今却连离开家门的能力都没有。</p>
@@ -703,11 +750,15 @@
         	<div id="" data-role="header" >
         		<h2>深夜小狗神秘事件</h2>
         		<a href="#RightPanel" data-icon = "user" data-role="button" data-inline="true">个人信息</a>
-        		<a href=""  data-icon="search" data-inline="true">搜索</a>
+        		<a href="#search"  data-icon="search" data-inline="true">搜索</a>
         	</div>
         	
         	<div class="ui-content" role="main">
-        		<img src="img/book/s29418847.jpg"/>
+        		<div class="owl-carousel">
+        			<div class="item">
+        				<img src="img/book/s29418847.jpg"/>
+        			</div>
+        		</div>
         		<div id="">
         			<h2>深夜小狗神秘事件</h4>
         			<p>作者： 马克•哈登</p>
