@@ -42,7 +42,7 @@
 					$("[data-icon='search']").addClass("ui-btn ui-icon-search ui-btn-icon-notext ui-white-background");
 					
 					$("[data-icon='search'],[data-icon='user']").css({
-						"background":"#49AFCD",
+						"background-color":"#49AFCD",
 						"border":"0px",
 					});
 					
@@ -56,11 +56,17 @@
 						$("#body").toggleClass("ui-bar-b ui-body-b ui-page-theme-b ui-btn-b");
 
 
-						var BackGround = $("[data-icon='search'],[data-icon='user']").css("background-color");
-						if (BackGround == "#49AFCD") {
-								$("[data-icon='search'],[data-icon='user']").css("background-color", "#000000");
+//						var BackGround = $("[data-icon='search'],[data-icon='user']").css("background-color");
+						var BackGround = $("[data-icon='search']").css("background-color");
+					
+//						alert($("#49AFCD").getRGBColorValue(;));
+
+						
+						if (BackGround != "#49AFCD") {
+								$("[data-icon='search'],[data-icon='user']").css("background-color", "#49AFCD");
 						} else{
-							$("[data-icon='search'],[data-icon='user']").css("background-color", "#49AFCD");
+							alert("text2");
+							$("[data-icon='search'],[data-icon='user']").css("background-color", "#000000");
 						}
 					});
 					
@@ -228,16 +234,16 @@
 						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
 					</div>
 					<div class="item">
-						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
-						<!--<a href=""><img src="img/book/s28831044.jpg"/></a>-->
+						<!--<a href="#category"><img src="img/book/s1039012.jpg"/></a>-->
+						<a href=""><img src="img/book/s28831044.jpg"/></a>
 					</div>
 					<div class="item">
-						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
-						<!--<a href=""><img src="img/book/s29418847.jpg"/></a>-->
+						<!--<a href="#category"><img src="img/book/s1039012.jpg"/></a>-->
+						<a href=""><img src="img/book/s29418847.jpg"/></a>
 					</div>
 					<div class="item">
-						<a href="#category"><img src="img/book/s1039012.jpg"/></a>
-						<!--<a href=""><img src="img/book/s29450536.jpg"/></a>-->
+						<!--<a href="#category"><img src="img/book/s1039012.jpg"/></a>-->
+						<a href=""><img src="img/book/s29450536.jpg"/></a>
 					</div>
 				</div>
 				
@@ -278,7 +284,7 @@
 						</a>
 					</li>
 				</ul>
-				<ul data-role = "listview">
+				<ul data-role = "listview" class="ui-listview" data-next="category">
 					<li data-role = "list-divider">新书速递</li>
 					<li>
 						<a href="">
@@ -313,7 +319,7 @@
 						</a>
 					</li>
 				</ul>
-				<ul data-role = "listview">
+				<ul data-role = "listview" class="ui-listview" data-next="category">
 					<li data-role = "list-divider">阅读&diams;一刻</li>
 					<li>
 						<a href="">
